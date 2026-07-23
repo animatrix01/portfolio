@@ -1,0 +1,5 @@
+{
+  "name": "Spring Animation Blog",
+  "description": "A high-fidelity blog post about spring animations featuring a morphing 'Nike-style' menu that transforms into a progress bar on scroll.",
+  "requestFramePermissions": []
+}
