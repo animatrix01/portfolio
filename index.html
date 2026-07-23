@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en" class="dark">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Animesh</title>
+  <link rel="icon" type="image/png" href="/Favicon.png" />
+  <meta name="description"
+    content="Crafting beautiful, immersive web experiences — engineering meets art,animations. Solving Real World Problems." />
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="Animesh" />
+  <meta property="og:title" content="Animesh | Creative Developer" />
+  <meta property="og:description"
+    content="Crafting beautiful, immersive web experiences — engineering meets art,animations. Solving Real World Problems." />
+  <meta property="og:image" content="/og-preview.png" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Animesh" />
+  <meta name="twitter:description"
+    content="Crafting beautiful, immersive web experiences — engineering meets art,animations. Solving Real World Problems." />
+  <meta name="twitter:image" content="/og-preview.png" />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          colors: {
+            border: "hsl(var(--border))",
+            background: "hsl(var(--background))",
+            foreground: "hsl(var(--foreground))",
+          },
+          fontFamily: {
+            handwriting: ['Caveat', 'cursive'],
+            sans: ['Inter', 'sans-serif'],
+            serif: ['Playfair Display', 'serif'],
+            mono: ['JetBrains Mono', 'monospace'],
+          },
+          animation: {
+            shimmer: 'shimmer 3s linear infinite',
+          }
+        }
+      }
+    }
+  </script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Caveat:wght@400..700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&family=Playfair+Display:ital,wght@0,400;0,600;1,400&display=swap"
+    rel="stylesheet">
+  <style>
+    :root {
+      --expo-out: cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    body {
+      font-family: 'Inter', sans-serif;
+    }
+
+    h1,
+    h2,
+    h3,
+    h4 {
+      font-family: 'Playfair Display', serif;
+    }
+
+    /* Hide scrollbar for cleaner look */
+    ::-webkit-scrollbar {
+      width: 8px;
+    }
+
+    ::-webkit-scrollbar-track {
+      background: transparent;
+    }
+
+    ::-webkit-scrollbar-thumb {
+      background: #333;
+      border-radius: 4px;
+    }
+
+    .dark ::-webkit-scrollbar-thumb {
+      background: #333;
+    }
+
+    .light ::-webkit-scrollbar-thumb {
+      background: #ccc;
+    }
+
+    @keyframes shimmer {
+      0% {
+        background-position: 200% center;
+      }
+
+      100% {
+        background-position: -200% center;
+      }
+    }
+
+    /* View Transitions for Theme Toggle */
+    ::view-transition-group(root) {
+      animation-duration: 0.7s;
+      animation-timing-function: var(--expo-out);
+    }
+
+    ::view-transition-new(root) {
+      animation-name: reveal-light;
+      animation-fill-mode: both;
+      mix-blend-mode: normal;
+    }
+
+    ::view-transition-old(root),
+    .dark::view-transition-old(root) {
+      animation: none;
+      animation-fill-mode: both;
+      z-index: -1;
+    }
+
+    .dark::view-transition-new(root) {
+      animation-name: reveal-dark;
+      animation-fill-mode: both;
+      mix-blend-mode: normal;
+    }
+
+    @keyframes reveal-dark {
+      from {
+        clip-path: polygon(50% -71%, -50% 71%, -50% 71%, 50% -71%);
+      }
+
+      to {
+        clip-path: polygon(50% -71%, -50% 71%, 50% 171%, 171% 50%);
+      }
+    }
+
+    @keyframes reveal-light {
+      from {
+        clip-path: polygon(171% 50%, 50% 171%, 50% 171%, 171% 50%);
+      }
+
+      to {
+        clip-path: polygon(171% 50%, 50% 171%, -50% 71%, 50% -71%);
+      }
+    }
+  </style>
+  <script type="importmap">
+{
+  "imports": {
+    "react/": "https://esm.sh/react@^19.2.4/",
+    "react": "https://esm.sh/react@^19.2.4",
+    "react-dom/": "https://esm.sh/react-dom@^19.2.4/",
+    "clsx": "https://esm.sh/clsx@^2.1.1",
+    "tailwind-merge": "https://esm.sh/tailwind-merge@^3.4.0",
+    "framer-motion": "https://esm.sh/framer-motion@^12.29.3",
+    "lucide-react": "https://esm.sh/lucide-react@^0.563.0",
+    "@paper-design/shaders": "https://esm.sh/@paper-design/shaders",
+    "@paper-design/shaders-react": "https://esm.sh/@paper-design/shaders-react?deps=react@19.2.4",
+    "gsap": "https://esm.sh/gsap@3.12.5"
+  }
+}
+</script>
+  <link rel="stylesheet" href="/index.css">
+</head>
+
+<body class="bg-white text-black dark:bg-black dark:text-white transition-colors duration-300">
+  <div id="root"></div>
+  <script type="module" src="/index.tsx"></script>
+</body>
+
+</html>
