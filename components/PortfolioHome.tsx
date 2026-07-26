@@ -22,7 +22,6 @@ import { SkillsMarquee } from './ui/SkillsMarquee';
 import { GitHubStarsButton } from './ui/GitHubStarsButton';
 import { SkillIcon } from './ui/SkillIcon';
 import { WorkTimeline } from './ui/WorkTimeline';
-import { VerifiedBadge } from './ui/NativeVerifiedBadge';
 import { LocationIndicator } from './ui/LocationIndicator';
 import { ScrollFillText } from './ui/ScrollFillText';
 
@@ -201,9 +200,8 @@ export const PortfolioHome: React.FC<PortfolioHomeProps> = ({ onNavigate, toggle
                                             <span className="text-xs font-medium text-emerald-600 dark:text-emerald-400 tracking-wide">Available for new projects</span>
                                         </div>
                                     </div>
-                                    <h1 ref={triggerRef} className="text-3xl md:text-4xl font-serif font-medium text-gray-900 dark:text-white mb-2 leading-tight text-balance flex flex-wrap items-center gap-2">
+                                    <h1 ref={triggerRef} className="text-3xl md:text-4xl font-serif font-medium text-gray-900 dark:text-white mb-2 leading-tight text-balance">
                                         Hi, I'm Animesh
-                                        <img src="/Twitter_Verified_Badge.svg.png" alt="Verified" className="w-[22px] h-[22px] md:w-[26px] md:h-[26px] mt-1.5 object-contain" />
                                     </h1>
 
                                     {/* Typewriter Role Text */}

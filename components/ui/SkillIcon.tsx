@@ -13,25 +13,11 @@ interface SkillIconProps {
 
 export const SkillIcon: React.FC<SkillIconProps> = ({ src, alt, className, imgClassName }) => {
     return (
-        <div className={cn("grid place-items-center group relative overflow-hidden", className)}>
-            {/* 1st Image: Filtered (Ghost) */}
+        <div className={cn("grid place-items-center", className)}>
             <img
                 src={src}
                 alt={alt}
-                className={cn(
-                    "col-start-1 row-start-1 w-full h-full object-contain transition-all duration-500",
-                    "filter grayscale invert"
-                )}
-            />
-            {/* 2nd Image: Real (Revealed on Hover) */}
-            <img
-                src={src}
-                alt={alt}
-                className={cn(
-                    "col-start-1 row-start-1 w-full h-full object-contain transition-all duration-200 ease-out",
-                    "[clip-path:circle(0%_at_50%_50%)] group-hover:[clip-path:circle(150%_at_50%_50%)]",
-                    imgClassName
-                )}
+                className={cn("w-full h-full object-contain", imgClassName)}
             />
         </div>
     );

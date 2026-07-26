@@ -105,18 +105,18 @@ export const SkillsMarquee: React.FC<{ skills: any[] }> = ({ skills }) => {
         >
             <ParallaxText baseVelocity={-1}>
                 {row1.map((skill) => (
-                    <div key={skill.name} className="flex items-center gap-1.5 px-2 py-1 mx-2 opacity-60 hover:opacity-100 transition-opacity grayscale hover:grayscale-0 cursor-default">
+                    <div key={skill.name} className="flex items-center gap-1.5 px-2 py-1 mx-2 cursor-default">
                         <SkillIcon src={skill.icon} alt={skill.name} className="w-4 h-4 md:w-5 md:h-5" />
-                        <span className="text-xs md:text-sm font-medium text-gray-600 dark:text-gray-300">{skill.name}</span>
+                        <span className="text-xs md:text-sm font-medium text-gray-700 dark:text-gray-200">{skill.name}</span>
                     </div>
                 ))}
             </ParallaxText>
 
             <ParallaxText baseVelocity={1}>
                 {row2.map((skill) => (
-                    <div key={skill.name} className="flex items-center gap-1.5 px-2 py-1 mx-2 opacity-60 hover:opacity-100 transition-opacity grayscale hover:grayscale-0 cursor-default">
+                    <div key={skill.name} className="flex items-center gap-1.5 px-2 py-1 mx-2 cursor-default">
                         <SkillIcon src={skill.icon} alt={skill.name} className="w-4 h-4 md:w-5 md:h-5" />
-                        <span className="text-xs md:text-sm font-medium text-gray-600 dark:text-gray-300">{skill.name}</span>
+                        <span className="text-xs md:text-sm font-medium text-gray-700 dark:text-gray-200">{skill.name}</span>
                     </div>
                 ))}
             </ParallaxText>
