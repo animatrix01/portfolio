@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { ArrowUpRight, Github, Eye, ArrowRight, FileText, ChevronDown, ChevronRight, Beaker, Copy, Check } from 'lucide-react';
+import { ArrowUpRight, Github, Eye, ArrowRight, FileText, ChevronDown, ChevronRight, Copy, Check } from 'lucide-react';
 
 import { cn, triggerHaptic } from '../lib/utils';
 import { ScrollReveal } from './ScrollReveal';
@@ -19,6 +19,7 @@ import { SKILLS } from './ArraySkills';
 import { ProjectCard } from './ui/ProjectCard'; // Import new ProjectCard
 import { PreviewLinkCard } from './ui/PreviewLinkCard';
 import { SkillsMarquee } from './ui/SkillsMarquee';
+import { OrbitalStack } from './ui/OrbitalStack';
 import { GitHubStarsButton } from './ui/GitHubStarsButton';
 import { SkillIcon } from './ui/SkillIcon';
 import { WorkTimeline } from './ui/WorkTimeline';
@@ -33,39 +34,28 @@ interface PortfolioHomeProps {
 
 const SECTIONS = [
     { id: 'about', title: 'About' },
-    { id: 'work', title: 'Work Experience' },
+    { id: 'work', title: 'Engineering Journey' },
     { id: 'skills', title: 'Tech Stack' },
     { id: 'articles', title: 'Articles' },
     { id: 'projects', title: 'Projects' },
-    { id: 'experiments', title: 'Experiments' },
     { id: 'contact', title: 'Contact' },
 ];
 
 const EXPERIENCE_DATA = [
     {
-        role: "AI/ML Intern",
-        company: "IBM SkillsBuild",
-        date: "Jun 2024 - Jul 2024",
-        logo: "https://upload.wikimedia.org/wikipedia/commons/thumb/5/51/IBM_logo.svg/1200px-IBM_logo.svg.png",
-        desc: "Gained hands-on experience in Artificial Intelligence and Machine Learning, developing practical solutions for real-world problems.",
+        company: "AI Engineer & Full-Stack Developer",
+        role: "Independent Builder",
+        date: "2026 - Present",
+        desc: "A continuous journey of mastering modern web architecture and generative AI, moving from foundational full-stack development to architecting intelligent, scalable systems.",
         details: [
-            "Built and deployed an AI chatbot using IBM Watson Assistant, reducing manual query workload by ~40%.",
-            "Developed a Diabetes Prediction ML model achieving 75% accuracy using supervised learning on healthcare datasets.",
-            "Deployed cloud-hosted components improving accessibility and model uptime."
+            "The Foundation (Locking In): Dedicated a focused two-month lock-in period to master the modern web ecosystem, building robust backends with Node.js, Express, and PostgreSQL, while architecting clean UIs with React and Tailwind CSS.",
+            "Architecting the Stack: Scaled up to production-grade tools, utilizing Next.js 15, Drizzle ORM, and Clerk for authentication to build highly optimized, full-stack dashboards and applications.",
+            "AI Internals & Automation: Deep diving into the core architecture of Large Language Models (studying model building from scratch) and exploring intelligent workflow orchestration using AI agents and n8n.",
+            "Shipping Real-World Systems: Bridging full-stack and AI by building platforms like NextCareer AI, FraudLens, and  Actively collaborating to integrate polished, high-performance frontends with complex Python-based AI backends."
         ]
     }
 ];
 
-const EXPERIMENTS_DATA = [
-    {
-        title: "Kanban Board",
-        desc: "Advanced drag-and-drop mechanics with physics-based reordering and real-time state synchronization.",
-        tech: "Framer Motion / DnD Kit",
-        link: "#",
-        internalView: "kanban",
-        iconUrl: "https://i.pinimg.com/736x/68/58/a8/6858a8254d5de88cd6bdc168a9f0b393.jpg"
-    }
-];
 
 export const PortfolioHome: React.FC<PortfolioHomeProps> = ({ onNavigate, toggleTheme, isDark }) => {
     const triggerRef = useRef<HTMLHeadingElement>(null);
@@ -239,7 +229,7 @@ export const PortfolioHome: React.FC<PortfolioHomeProps> = ({ onNavigate, toggle
                 {/* --- WORK EXPERIENCE --- */}
                 <section id="work" className="mb-16 scroll-mt-32">
                     <h2 className="text-2xl font-serif text-gray-900 dark:text-white mb-6 flex items-center gap-3">
-                        Career Path
+                        Engineering Journey
                         <div className="h-[1px] flex-1 bg-gray-200 dark:bg-white/10" />
                     </h2>
                     <div className="flex flex-col">
@@ -253,7 +243,7 @@ export const PortfolioHome: React.FC<PortfolioHomeProps> = ({ onNavigate, toggle
 
 
                 {/* --- SKILLS --- */}
-                <section id="skills" className="mb-4 scroll-mt-32">
+                <section id="skills" className="mb-16 scroll-mt-32">
                     <div className="mb-6">
                         <h2 className="text-2xl font-serif text-gray-900 dark:text-white mb-2 flex items-center gap-3">
                             Tech Stack
@@ -263,12 +253,14 @@ export const PortfolioHome: React.FC<PortfolioHomeProps> = ({ onNavigate, toggle
                             The arsenal for building digital experiences.
                         </p>
                     </div>
-                    <div className="w-full -mx-6 md:-mx-0 overflow-hidden mb-12">
-                        <SkillsMarquee skills={safeSkills} />
+
+                    {/* Orbital layout — fixed h-[450px] prevents overlap with sections below */}
+                    <div className="relative w-full max-w-3xl mx-auto h-[450px] md:h-[500px] flex items-center justify-center my-12">
+                        <OrbitalStack />
                     </div>
 
                     {/* Integrated Tools Section */}
-                    <div className="mt-0">
+                    <div className="mt-16">
                         <ToolsDock />
                     </div>
                 </section>
@@ -384,77 +376,6 @@ export const PortfolioHome: React.FC<PortfolioHomeProps> = ({ onNavigate, toggle
                 <div className="mb-16">
                     <ScrollFillText />
                 </div>
-
-                {/* --- EXPERIMENTS --- */}
-                <section id="experiments" className="mb-16 scroll-mt-32">
-                    <div className="mb-8">
-                        <h2 className="text-2xl font-serif text-gray-900 dark:text-white mb-2 flex items-center gap-3">
-                            Experiments
-                            <div className="h-[1px] flex-1 bg-gray-200 dark:bg-white/10" />
-                        </h2>
-                        <p className="text-xs text-gray-500 dark:text-gray-400 font-mono tracking-wide leading-relaxed max-w-2xl">
-                            Recreating and enhancing top-tier components. Reverse-engineered with respect to original creators.
-                        </p>
-                    </div>
-
-                    <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-                        {EXPERIMENTS_DATA.map((exp, idx) => (
-                            <motion.div
-                                key={idx}
-                                initial={{ opacity: 0, y: 20 }}
-                                whileInView={{ opacity: 1, y: 0 }}
-                                viewport={{ once: true }}
-                                transition={{ duration: 0.5, delay: idx * 0.1 }}
-                                className="group relative p-6 rounded-2xl bg-gray-50/50 dark:bg-white/5 border border-gray-100/50 dark:border-white/5 hover:border-blue-500/30 dark:hover:border-blue-400/30 transition-all duration-500 active:scale-[0.98] overflow-hidden cursor-pointer"
-                                onClick={(e) => {
-                                    e.preventDefault();
-                                    e.stopPropagation(); // Stop propagation to be safe
-                                    triggerHaptic(10);
-                                    if (exp.internalView) {
-                                        onNavigate(exp.internalView);
-                                    } else {
-                                        window.open(exp.link, '_blank');
-                                    }
-                                }}
-                            >
-                                {/* Interactive Glow */}
-                                <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 bg-[radial-gradient(circle_at_50%_0%,rgba(59,130,246,0.08)_0%,transparent_70%)] pointer-events-none" />
-                                <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-700 blur-xl bg-blue-500/5 -z-10" />
-
-                                <div className="relative flex flex-col h-full z-10">
-                                    <div className="mb-4 flex justify-between items-start">
-                                        <div className="p-2 rounded-lg text-blue-600 dark:text-blue-400 flex items-center justify-center">
-                                            {exp.iconUrl ? (
-                                                <img src={exp.iconUrl} alt="icon" className="w-[40px] h-[40px] object-cover rounded-lg" />
-                                            ) : (
-                                                <Beaker size={18} />
-                                            )}
-                                        </div>
-                                        <span className="text-[10px] font-mono font-bold uppercase tracking-wider text-gray-400 group-hover:text-blue-500 transition-colors">
-                                            {exp.tech}
-                                        </span>
-                                    </div>
-                                    <h3 className="text-lg font-serif font-medium text-gray-900 dark:text-white mb-2 group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors">
-                                        {exp.title}
-                                    </h3>
-                                    <p className="text-sm text-gray-600 dark:text-gray-400 leading-relaxed line-clamp-3">
-                                        {exp.desc}
-                                    </p>
-                                    <div className="mt-auto pt-4 flex items-center gap-1.5 text-xs font-medium text-blue-600 dark:text-blue-400 opacity-0 group-hover:opacity-100 transition-opacity">
-                                        {exp.internalView ? "Try it now" : "View Source"} <ArrowUpRight size={12} />
-                                    </div>
-                                </div>
-                            </motion.div>
-                        ))}
-                    </div>
-
-                    <div className="mt-12 flex justify-center">
-                        <span className="animate-shimmer bg-[linear-gradient(110deg,#939393,45%,#1e1e1e,55%,#939393)] dark:bg-[linear-gradient(110deg,#939393,45%,#e5e5e5,55%,#939393)] bg-[length:200%_100%] bg-clip-text text-transparent text-2xl font-semibold">
-                            Secret Research Ongoing
-                        </span>
-                    </div>
-                </section>
-
 
 
                 {/* --- CONTACT --- */}
